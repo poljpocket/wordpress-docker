@@ -2,17 +2,19 @@ services:
   web:
     build:
       dockerfile: ./Dockerfile
+      args:
+        PHP_VERSION: "7.4"
     ports:
-      - "9080:80"
-    environment:
-      WORDPRESS_DB_HOST: database
-      WORDPRESS_DB_USER: docker
-      WORDPRESS_DB_PASSWORD: docker
-      WORDPRESS_DB_NAME: docker
+      - "8080:80"
     depends_on:
       - database
+    environment:
+      WEB_USER_ID: 1000
+      WEB_GROUP_ID: 1000
     volumes:
       - files:/var/www/html:rw
+      - ./themes:/var/www/html/wp-content/themes:rw
+      - ./plugins:/var/www/html/wp-content/plugins:rw
   database:
     image: mariadb:10.6
     volumes:
@@ -27,7 +29,7 @@ services:
     depends_on:
       - database
     ports:
-      - "9081:80"
+      - "8081:80"
     environment:
       PMA_USER: docker
       PMA_PASSWORD: docker
