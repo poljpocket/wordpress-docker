@@ -9,7 +9,8 @@ services:
       WEB_USER_ID: 1000
       WEB_GROUP_ID: 1000
     volumes:
-      - ./backup:/backup
+      - files:/var/www/html:rw
+      - ./backup:/backup:rw
       - ./themes:/var/www/html/wp-content/themes:rw
       - ./plugins:/var/www/html/wp-content/plugins:rw
   database:
