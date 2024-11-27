@@ -2,3 +2,9 @@
 
 /backup/*
 !/backup/.gitkeep
+
+/themes/*
+!/themes/.gitkeep
+
+/plugins/*
+!/plugins/.gitkeep
