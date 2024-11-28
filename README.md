@@ -16,6 +16,10 @@ There are several images available for different PHP versions. Compare [Docker H
 
 Set `WEB_USER_ID` and `WEB_GROUP_ID` in `docker-compose.yml` to the appropriate values for your local user (on most Linux installations, the first user has ID `1000`). You can use `id` to verify.
 
+### Persistence level
+
+By default, the `docker-compose.yml` file will persist the database and the files as volumes to allow for multiple runs of the same installation. You can tweak this to be even more temporary and simplify the clean-up (see below).
+
 ## Running the composition
 
 Place the `installer.php` and the archive (`.dup` or `.zip`) into the `backup` folder.
@@ -28,7 +32,9 @@ After the installation, a `copied` file will be placed into the `backup` folder 
 
 ## Clean-up
 
-You can use one single installation of this repository for multiple runs of different archives. To clean up, stop the composition and clear the `backup`, `themes` and `plugins` folders. Also, remove the `files` and `database` volumes Docker created to have a clean slate again.
+You can use one single installation of this repository for multiple runs of different archives. To clean up, stop the composition and clear the `backup`, `themes` and `plugins` folders.
+
+If you are using default persistence (see above), remove the `files` and `database` volumes Docker created to have a clean slate again.
 
 ## Advanced usage
 
