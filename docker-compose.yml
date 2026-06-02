@@ -1,6 +1,6 @@
 services:
   web:
-    image: poljpocket/wordpress:php7.4
+    image: poljpocket/wordpress:php8.5
     ports:
       - "127.0.0.1:8080:80"
     depends_on:
